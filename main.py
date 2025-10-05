@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 from stats import words_counter 
 from stats import sort_on
@@ -7,7 +8,9 @@ def get_book_text(book_path):
         return f.read()
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) !=2:
+        print("Usage: python3 main.py <path_to_book>")
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     counter = count_words(text)
     print("============ BOOKBOT ============")
